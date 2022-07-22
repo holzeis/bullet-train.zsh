@@ -414,6 +414,8 @@ prompt_cmd_exec_time() {
 
 # Custom
 prompt_custom() {
+  BULLETTRAIN_CUSTOM_MSG=$(kubectl config current-context)/$(kubectl config view --minify --output 'jsonpath={..namespace}'; echo)
+
   if [[ $BULLETTRAIN_CUSTOM_MSG == false ]]; then
     return
   fi
@@ -656,8 +658,8 @@ prompt_chars() {
     bt_prompt_chars="${bt_prompt_chars}"
   fi
 
-  echo -n "$bt_prompt_chars"
-
+  echo -n "$bt_prompt_chars "
+  
   if [[ -n $BULLETTRAIN_PROMPT_CHAR ]]; then
     echo -n " "
   fi
